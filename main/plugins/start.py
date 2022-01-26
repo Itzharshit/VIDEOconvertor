@@ -22,9 +22,7 @@ async def start(event):
 @Drone.on(events.callbackquery.CallbackQuery(data="menu"))
 async def menu(event):
     await event.client.send_file(event.chat_id, caption="**📑MENU.**", file=file,
-                    buttons=[[
-                         Button.inline("info.", data="info"),
-                         Button.inline("SOURCE-CODE", data="source")],
+                    buttons=[
                          [
                          Button.inline("NOTICE.", data="notice"),
                          Button.inline("Help/SETTINGS.", data="help")],
@@ -35,9 +33,7 @@ async def menu(event):
 @Drone.on(events.callbackquery.CallbackQuery(data="menu2"))
 async def menu2(event):
     await event.edit("**📑MENU.**",
-                    buttons=[[
-                         Button.inline("info.", data="info"),
-                         Button.inline("SOURCE-CODE", data="source")],
+                    buttons=[
                          [
                          Button.inline("NOTICE.", data="notice"),
                          Button.inline("Help/SETTINGS.", data="help")],
