@@ -14,7 +14,7 @@ from main.plugins.actions import set_thumbnail, rem_thumbnail, heroku_restart
 async def start(event):
     await event.reply(f'{st}', 
                       buttons=[
-                              [Button.inline("Menu.", data="menu")]
+                              [Button.inline("Menu", data="menu")]
                               ])
     tag = f'[{event.sender.first_name}](tg://user?id={event.sender_id})'
     await Drone.send_message(int(ACCESS_CHANNEL), f'{tag} started the BOT')
@@ -24,10 +24,10 @@ async def menu(event):
     await event.client.send_file(event.chat_id, caption="**📑MENU.**", file=file,
                     buttons=[
                          [
-                         Button.inline("NOTICE.", data="notice"),
-                         Button.inline("Help/SETTINGS.", data="help")],
+                         Button.inline("NOTICE", data="notice"),
+                         Button.inline("Help/SETTINGS", data="help")],
                          [
-                         Button.url("DEVELOPER", url=f"{DEV}")]])
+                         Button.url("YouTube", url=f"https://youtube.com/channel/UC2anvk7MNeNzJ6B4c0SZepw")]])
     await event.delete()
     
 @Drone.on(events.callbackquery.CallbackQuery(data="menu2"))
@@ -35,28 +35,22 @@ async def menu2(event):
     await event.edit("**📑MENU.**",
                     buttons=[
                          [
-                         Button.inline("NOTICE.", data="notice"),
-                         Button.inline("Help/SETTINGS.", data="help")],
+                         Button.inline("NOTICE", data="notice"),
+                         Button.inline("SETTINGS", data="help")],
                          [
-                         Button.url("DEVELOPER", url=f"{DEV}")]])
+                         Button.url("YouTube", url=f"https://youtube.com/channel/UC2anvk7MNeNzJ6B4c0SZepw")]])
        
 @Drone.on(events.callbackquery.CallbackQuery(data="info"))
 async def info(event):
     await event.edit(f'**ℹ️NFO:**\n\n{info_text}',
                     buttons=[[
-                         Button.inline("Menu.", data="menu2")]])
+                         Button.inline("Menu", data="menu2")]])
     
 @Drone.on(events.callbackquery.CallbackQuery(data="notice"))
 async def notice(event):
     await event.answer(f'{spam_notice}', alert=True)
     
-@Drone.on(events.callbackquery.CallbackQuery(data="source"))
-async def source(event):
-    await event.edit(source_text,
-                    buttons=[[
-                         Button.url("Main.", url="https://github.com/vasusen-code/videoconvertor/tree/main"),
-                         Button.url("PUBLIC", url="https://github.com/vasusen-code/videoconvertor/tree/public")]])
-                         
+
                     
 @Drone.on(events.callbackquery.CallbackQuery(data="help"))
 async def help(event):
